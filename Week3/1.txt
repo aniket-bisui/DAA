@@ -1,0 +1,54 @@
+Q1) Given an unsorted array of integers, design an algorithm and a program to sort the array using insertion sort. Your program should be able to find number of comparisons and shifts (shifts total number of times the array elements are shifted from their place) required for sorting the array.
+Input Format:
+The first line contains number of test cases, T.
+For each test case, there will be two input lines.
+First line contains n (the size of array).
+Second line contains space-separated integers describing array.
+Output Format:
+The output will have T number of lines.
+For each test case T, there will be three output lines.
+First line will give the sorted array.
+Second line will give total number of comparisons.
+Third line will give total number of shift operations required.
+
+#include<bits/stdc++.h>
+using namespace std;
+void insertionSort(int a[], int n){
+    int ctr=0,flag=0;
+    for(int i=1;i<n;i++){
+        ctr++;
+        int j;
+        j=i-1;
+        int x=a[i];
+        while (j>-1 && a[j]>x){
+            ctr++;
+            a[j+1]=a[j];
+            flag++;
+            j--;
+        }
+        a[j+1]=x;
+    }
+    for(int i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+    cout<<" Shifts = "<<ctr<<endl;
+    cout<<"Comparison = "<<flag<<endl;
+}
+int main(){
+    int n;
+    cout<<"enter the no. of test cases"<<endl;
+    cin>>n;
+    while(n--)
+    {
+            int c;
+        cout<<"enter the no. of elements in an array"<<endl;
+     cin>>c;
+        int a[c];
+         for(int i=0;i<c;i++)
+         {
+            cin>>a[i];
+        }
+        insertionSort(a,c);
+    } 
+}
